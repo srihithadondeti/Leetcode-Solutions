@@ -1,0 +1,1 @@
+select round(avg(b.event_date IS NOT NULL),2) as fraction from (select player_id,MIN(event_date) as event_date from activity group by 1) as a left join activity as b on a.player_id=b.player_id and DATEDIFF(a.event_date,b.event_date)=-1;
